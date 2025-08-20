@@ -1,7 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="userDao"  class="com.xs.spring_ioc.UserDao"></bean>
+    <!--UserDao生成bean-->
+    <!--<bean id="userDao"  class="com.xs.spring_ioc.UserDao"></bean>-->
+
+    <!--UserService生成bean，并且将UserDao注入到UserService中(set方法)-->
+    <!--<bean id="userService"  class="com.xs.spring_ioc.UserService">
+        <property name="userDao" ref="userDao"></property>
+    </bean>-->
+
+    <!--set方法，用p命名空间替代标签-->
+    <!--<bean id="userService"  class="com.xs.spring_ioc.UserService" p:userDao-ref="userDao"/>-->
+
+    <!--UserService生成bean，并且将UserDao注入到UserService中(无参构造方法)-->
+    <!--<bean id="userService"  class="com.xs.spring_ioc.UserService">
+        <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+    </bean>-->
+
+    <!--普通数据类型注入-->
+    <!--<bean id="userService"  class="com.xs.spring_ioc.UserService">
+        <property name="name" value="zhangsan"></property>
+        <property name="age" value="18"></property>
+    </bean>-->
+
+    <!--集合数据类型注入-->
+    <bean id="userService"  class="com.xs.spring_ioc.UserService">
+        <property name="list">
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </list>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="u1" value-ref="user1"></entry>
+                <entry key="u2" value-ref="user2"></entry>
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="p1">v1</prop>
+                <prop key="p2">v2</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="user1" class="com.xs.spring_ioc.User">
+        <property name="name" value="tom"/>
+        <property name="addr" value="shanghai"/>
+    </bean>
+
+    <bean id="user2" class="com.xs.spring_ioc.User">
+        <property name="name" value="mike"/>
+        <property name="addr" value="beijing"/>
+    </bean>
+
 </beans>
