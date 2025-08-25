@@ -5,29 +5,29 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--UserDao生成bean-->
-    <!--<bean id="userDao"  class="com.xs.spring_ioc.UserDao"></bean>-->
+    <!--<bean id="userDao"  class="com.xs.spring_ioc.dao.UserDao"></bean>-->
 
     <!--UserService生成bean，并且将UserDao注入到UserService中(set方法)-->
-    <!--<bean id="userService"  class="com.xs.spring_ioc.UserService">
+    <!--<bean id="userService"  class="com.xs.spring_ioc.service.UserService">
         <property name="userDao" ref="userDao"></property>
     </bean>-->
 
     <!--set方法，用p命名空间替代标签-->
-    <!--<bean id="userService"  class="com.xs.spring_ioc.UserService" p:userDao-ref="userDao"/>-->
+    <!--<bean id="userService"  class="com.xs.spring_ioc.service.UserService" p:userDao-ref="userDao"/>-->
 
     <!--UserService生成bean，并且将UserDao注入到UserService中(无参构造方法)-->
-    <!--<bean id="userService"  class="com.xs.spring_ioc.UserService">
+    <!--<bean id="userService"  class="com.xs.spring_ioc.service.UserService">
         <constructor-arg name="userDao" ref="userDao"></constructor-arg>
     </bean>-->
 
     <!--普通数据类型注入-->
-    <!--<bean id="userService"  class="com.xs.spring_ioc.UserService">
+    <!--<bean id="userService"  class="com.xs.spring_ioc.service.UserService">
         <property name="name" value="zhangsan"></property>
         <property name="age" value="18"></property>
     </bean>-->
 
     <!--集合数据类型注入-->
-    <bean id="userService"  class="com.xs.spring_ioc.UserService">
+    <!--<bean id="userService"  class="com.xs.spring_ioc.service.UserService">
         <property name="list">
             <list>
                 <value>aaa</value>
@@ -60,5 +60,5 @@
         <property name="name" value="mike"/>
         <property name="addr" value="beijing"/>
     </bean>
-
+-->
 </beans>

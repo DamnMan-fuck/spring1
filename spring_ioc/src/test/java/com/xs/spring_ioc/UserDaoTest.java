@@ -1,7 +1,7 @@
 package com.xs.spring_ioc;
 
+import com.xs.spring_ioc.dao.IUserDao;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.xs.spring_ioc.IUserDao;
 
 public class UserDaoTest {
     public static void main(String[] args) {
