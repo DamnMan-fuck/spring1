@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--UserDao生成bean-->
     <!--<bean id="userDao"  class="com.xs.spring_ioc.dao.UserDao"></bean>-->
@@ -11,6 +11,14 @@
     <!--<bean id="userService"  class="com.xs.spring_ioc.service.UserService">
         <property name="userDao" ref="userDao"></property>
     </bean>-->
+
+    <bean id="userDao"  class="com.xs.spring_mvc.dao.UserDao"></bean>
+    <bean id="userService"  class="com.xs.spring_mvc.service.UserService">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+    <!--配置组件扫描-->
+    <context:component-scan base-package="com.xs.spring_mvc"></context:component-scan>
 
     <!--set方法，用p命名空间替代标签-->
     <!--<bean id="userService"  class="com.xs.spring_ioc.service.UserService" p:userDao-ref="userDao"/>-->
