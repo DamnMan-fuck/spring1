@@ -2,8 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--Controller组件扫描(配置之前要弄context空间)-->
     <context:component-scan base-package="com.xs.spring_mvc">
@@ -19,5 +20,33 @@
         <property name="prefix" value="/jsp/"/>
         <!--视图名称后缀-->
         <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--配置处理器映射器-->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>-->
+
+    <!--mvc注解驱动(配置之前要弄mvc空间),用于替代配置映射器和适配器-->
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+
+    <!--开放资源访问，通过springmvc框架帮忙去找，mapping:客户端访问资源地址，location:文件目录-->
+    <!--即访问/js/** 的资源，会去/js/目录下寻找-->
+    <!--<mvc:resources mapping="/js/**" location="/js/"></mvc:resources>-->
+
+    <!--交给tomcat去寻找对应的静态资源，可代替上面-->
+    <mvc:default-servlet-handler/>
+
+    <!--声明转换器-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.xs.spring_mvc.dateconverter.DateConverter"></bean>
+            </list>
+        </property>
     </bean>
 </beans>
