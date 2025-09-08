@@ -9,8 +9,10 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
@@ -19,6 +21,16 @@ import java.util.List;
 @Controller
 @RequestMapping(value="/user")//放在类上，请求url第一级目录，若此处不写，就相当于根目录
 public class UserController {
+
+    /*上传单个文件*/
+    @RequestMapping("/quick21")//请求映射
+    @ResponseBody  //告诉SpringMVC框架，不进行视图跳转，直接进行数据响应
+    public void save21(String username, MultipartFile uploadFile) throws IOException {
+        System.out.println(username);
+        //获得上传文件名称
+        String originalFilename = uploadFile.getOriginalFilename();
+        uploadFile.transferTo(new File("D:\\upload\\"+originalFilename));
+    }
 
     /*获得请求头Cookie*/
     @RequestMapping("/quick20")//请求映射

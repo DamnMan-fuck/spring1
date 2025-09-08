@@ -16,11 +16,11 @@ public class UserServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //调用监听器
-        ServletContext sc = req.getServletContext();//或者ServletContext sc = this.getServletContext()
+        ServletContext sc = (ServletContext) req.getServletContext();//或者ServletContext sc = this.getServletContext()
         //优化一：ApplicationContext app =(ApplicationContext)sc.getAttribute("app");
         //优化二：ApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(sc);
 
-        ApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(sc);
+        ApplicationContext app = WebApplicationContextUtils.getWebApplicationContext( sc);
         UserService userService = app.getBean(UserService.class);
         userService.save();
     }
