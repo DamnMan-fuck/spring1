@@ -11,6 +11,7 @@
     <modules>
         <module>spring_ioc</module>
         <module>spring_mvc</module>
+        <module>spring_test</module>
     </modules>
 
     <dependencies>

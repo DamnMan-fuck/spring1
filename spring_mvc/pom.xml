@@ -29,12 +29,6 @@
       <version>6.0.0</version>
       <scope>provided</scope>
     </dependency>
-      <dependency>
-          <groupId>javax.servlet.jsp</groupId>
-          <artifactId>javax.servlet.jsp-api</artifactId>
-          <version>2.2.1</version>
-          <scope>provided</scope>
-      </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
@@ -59,6 +53,12 @@
           <version>3.1.0</version>
           <scope>compile</scope>
       </dependency>
+    <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>javax.servlet.jsp-api</artifactId>
+        <version>2.2.1</version>
+        <scope>provided</scope>
+    </dependency>
 
       <dependency>
           <groupId>org.springframework</groupId>
@@ -115,7 +115,25 @@
         <version>6.2.9</version>
         <scope>compile</scope>
     </dependency>
-</dependencies>
+        <!-- Jackson核心包 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+    </dependencies>
 
   <build>
     <plugins>

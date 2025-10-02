@@ -15,10 +15,10 @@ import java.io.IOException;
 public class UserServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //µ÷ÓÃ¼àÌıÆ÷
-        ServletContext sc = (ServletContext) req.getServletContext();//»òÕßServletContext sc = this.getServletContext()
-        //ÓÅ»¯Ò»£ºApplicationContext app =(ApplicationContext)sc.getAttribute("app");
-        //ÓÅ»¯¶ş£ºApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(sc);
+        //è°ƒç”¨ç›‘å¬å™¨
+        ServletContext sc = (ServletContext) req.getServletContext();//æˆ–è€…ServletContext sc = this.getServletContext()
+        //ä¼˜åŒ–ä¸€ï¼šApplicationContext app =(ApplicationContext)sc.getAttribute("app");
+        //ä¼˜åŒ–äºŒï¼šApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(sc);
 
         ApplicationContext app = WebApplicationContextUtils.getWebApplicationContext( sc);
         UserService userService = app.getBean(UserService.class);
